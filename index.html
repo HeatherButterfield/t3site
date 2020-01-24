@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <canvas id="myChart" width="400" height="400"></canvas>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+    <script>
+    let ctx = document.getElementById('myChart').getContext('2d');
+    colors = ["rgb(255, 99, 132)","rgb(75, 192, 192)","rgb(255, 205, 86)","rgb(128,0,128)","rgb(54, 162, 235)"];
+    let json = [
+      {
+        label: "1",
+        x: "12",
+        y: "10",
+        r: "24"
+      },
+      {
+        label: "2",
+        x: "19",
+        y: "25",
+        r: "14"
+      },
+      {
+        label: "3",
+        x: "15",
+        y: "20",
+        r: "30"
+      }
+    ]
+
+    let theData = [];
+    json.forEach(function(item, index) {
+      theData.push({label:item.label, data:[{"x":item.x, "y":item.y, "r":item.r}],backgroundColor: colors[index]})
+    });
+
+    let myBubbleChart = new Chart(ctx, {
+        type: 'bubble',
+        data:{
+          datasets: theData
+        }
+    });
+    </script>
+  </body>
+</html>
